@@ -1,148 +1,321 @@
- 
-
 <!doctype html>
 
-<html lang="en">
+<html>
+	
+<head>
 
-    <head>
+<!--The following displays language used in browser to interpret page -->
+<meta charset="UTF-8">
 
-        <meta charset="utf-8"/>
+<!--The following line of code displays the page title on a browser tab -->
+<title>Site Title | Home</title>
 
-        <title> Home Cal Poly</title>
+<!--link tags are for linking to external files, in this case your CSS stylesheet-->
+<link href="style.css" rel="stylesheet" type="text/css">
+	
+<!--link tags are for linking to external files, in this case a special CSS stylesheet-->
+<link href="normalize.css" rel="stylesheet" type="text/css">
 
-        <link href="style.css" rel="stylesheet" type="text/css">
+<!--the following tag tells the browser to adjust the site according to screen size-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </head>  
+<!--The following code links to the jquery library -->
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+
+<!--The following code links to the javascript file that runs the slideshow -->	
+<script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
+    
+<!--The following code links to the javascript file that runs the parallax image -->    
+<script src="js/parallax.min.js"></script>
+	
+<!--The following code links to Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Raleway:900|Rubik" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	
+<!--The following javscript runs the jquery slideshow -->
+<script type="text/javascript">
+$('#slider').cycle({});
+</script>
+
+<!--The following javascript runs the nav bar which disappears on scroll-->
+<script type="text/javascript">
+// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('header').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('header').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('header').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+</script>
+    
+<!--Favicon - images are in a folder called 'fav'-->
+<link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
+<link rel="manifest" href="img/fav/site.webmanifest">
+<link rel="mask-icon" href="img/fav/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!--End Favicon-->
+    
+<!--back to top button-->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}    
+</script>   
+</head>
 
 <body>
-<!-- Slideshow container -->
-<div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 12</div>
-    <img src="IMG/office-8.jpg" style="width:100%">
-    <div class="text">On February 7th, 2020, I enter the San Luis Obispo Tribune office space to meet up with Cal Poly journalism alumni who are now employed there. I am greeted with grins and friendly faces, contrary to the stereotype that newsrooms are cold and hostile environments. 
+<!--beginning of navigation section-->
+<header>
+<div class="nav-container">
+<div class="brand"><img src="img/journologo.png" width="65" height="60" alt=""/></div>
+<nav>
+<div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+  <ul class="nav-list">
+        <li>
+          <a href="#home">About</a>
+        </li>
+	   <li>
+          <a href="#gal">A Day at the Tribune</a>
+		  </li>
+	  	<li>
+          <a href="#tl">Future Plans</a>
+        </li>
+        <li>
+          <a href="#vid">Megan Healy at KSBY</a>
+			</li>
+      <li>
+          <a href="#num">More information</a>
+			</li>
+      </ul>
+</nav>
 </div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 12</div>
-    <img src="IMG/kaytlyn-3.jpg" style="width:100%">
-    <div class="text">Katlyn Leslie graduated from Cal Poly with a Journalism degree in 2013. During her time in college, she started out by working on the Mustang Daily (now Mustang News). She then pursued an internship at the Tribune in her winter quarter of senior year. She lucked out when they had a job opening as a part time news assistant, and then worked her way up to a reporter position two years later. </div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 12</div>
-    <img src="IMG/office-2.jpg" style="width:100%">
-    <div class="text">Her duties as a staff writer include covering big business news, attending conferences, and covering breaking news. This job requires constant alertness and engagement, as news stories are ongoing and must be kept track of.</div>
-  </div>
+<!--closing navigation tag-->
+</header>
+<!--end of navigation section-->
     
-  <div class="mySlides fade">
-    <div class="numbertext">4 / 12</div>
-    <img src="IMG/kaytlyn-1.jpg" style="width:100%">
-    <div class="text">“I grew up in the military so we moved around a lot so I never had that sense of connectedness. I always knew that what I wanted was to have a place in a community,” Leslie shares, “When you’re college you want to be a big star reporter. You want to report national news at one of the big papers. But I really feel like the future of journalism is in community news- in telling the stories of the people in an area.”</div>
-  </div>
-    
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 12</div>
-    <img src="IMG/kaytlyn-2.jpg" style="width:100%">
-    <div class="text">Leslie feels that the Cal Poly Journalism major has sufficiently prepared her for her career, and says she even refers to her old class notes sometimes. She encourages Cal Poly Journalism majors to get involved, whether that be with the school radio station or newspaper.</div>
-  </div>
-    
-  <div class="mySlides fade">
-    <div class="numbertext">6 / 12</div>
-    <img src="IMG/stephanie-1.jpg" style="width:100%">
-    <div class="text">Stephanie Finucane graduated from Cal Poly in 1980 with a degree in journalism and a concentration in agriculture. She started off doing an internship at Lumix Feed, then became an editorial assistant in Oregon, worked at Santa Maria Times, was a reporter at Santa Barbara News Press and finally became a reporter at the Tribune in 2000. She then worked her up to an assistant opinion editor position, the job she currently holds.</div>
-  </div>
-    
-<div class="mySlides fade">
-    <div class="numbertext">7 / 12</div>
-    <img src="IMG/office-5.jpg" style="width:100%">
-    <div class="text">Her duties as an opinion editor include interviewing, endorsing candidates, editing letters, picking cartoons and writing editorials.</div>
-  </div>
-    
-    <div class="mySlides fade">
-    <div class="numbertext">8 / 12</div>
-    <img src="IMG/stephanie-2-1.jpg" style="width:100%">
-    <div class="text">“This job is challenging in that I write about an array of subjects, while reporters maybe cover two or three different topics. You kind of have to know a bit about everything going on in the county. It’s also really interesting because you get to write about a lot of different things,” says Finucane.</div>
-  </div>
-    
-    <div class="mySlides fade">
-    <div class="numbertext">9 / 12</div>
-    <img src="IMG/joe-1.jpg" style="width:100%">
-    <div class="text">Joe Tarica, another Cal Poly journalism alumni, graduated in 1993. Like Leslie, he worked on the Mustang daily during college and decided to do an internship at the Tribune. He was offered a part-time position as a copy editor, and this became a full-time position upon his graduation.</div>
-  </div>
-    
-    <div class="mySlides fade">
-    <div class="numbertext">10 / 12</div>
-    <img src="IMG/office-3.jpg" style="width:100%">
-    <div class="text">Tarica, pictured above in a meeting, says his job consists of overseeing reporters and dealing with corporate matters. Though journalism has changed throughout his career, he believes that certain elements of the profession have remained the same.</div>
-  </div>
-    
-    <div class="mySlides fade">
-    <div class="numbertext">11 / 12</div>
-    <img src="IMG/office-4.jpg" style="width:100%">
-    <div class="text">“We’re fulfilling a role in the community that’s more important now than it ever has been,” Tarica asserts, “Being able to tell stories, go out and communicate with our readership, track our local governments- and trying to do all the functions that the American press is expected to do. All of that is the same as it has been throughout my career.”</div>
-  </div>
-    
-    <div class="mySlides fade">
-    <div class="numbertext">12 / 12</div>
-    <img src="IMG/office-7-.jpg" style="width:100%">
-    <div class="text">The Tribune will be offering internships for college students this summer. Tarica says that any journalism students who are interested should stay tuned for an email from the Cal Poly Journalism department with more details.</div>
-  </div>
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!--main image-->
+<div class="container">
+<p class="line-1 anim-typewriter" style="color: white; font-family: courier new; font-weight: bold;">The future influences the present just as much as the past. -Friedrich Nietzsche</p>
 </div>
-<br>
-
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-  <span class="dot" onclick="currentSlide(5)"></span>
-  <span class="dot" onclick="currentSlide(6)"></span>
-  <span class="dot" onclick="currentSlide(7)"></span>
-  <span class="dot" onclick="currentSlide(8)"></span>
-  <span class="dot" onclick="currentSlide(9)"></span>
-  <span class="dot" onclick="currentSlide(10)"></span>
-  <span class="dot" onclick="currentSlide(11)"></span>
-  <span class="dot" onclick="currentSlide(12)"></span>
+<!--animated welcome-->
+<div class="wrapper">
+<!--animated welcome code here-->	
 </div>
     
-  <script> 
-var slideIndex = 1;
-showSlides(slideIndex);
+<!--beginning of main content area-->
+<div class="row whiteBG">
+<h2 id="home">About Journo Journeys</h2>
+<article>
+<p class="tab">Discover the potential avenues you can pursue with a Cal Poly journalism degree by taking a glimpse into the lives of Cal Poly journalism alumni.<br>See how these individuals have applied Cal Poly's esteemed "learn by doing" approach to their current jobs.</p>
+<p class="tab"><a href="#gal">A Day at The Tribune</a></p>
+</article>
+</div>
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+<!--beginning of slideshow section-->
+<div class="row blueBG"><!--beginning of row-->
+<h2 id="gal">A Day at the Tribune</h2>
+<article><!--beginning of article-->
+<p class="tab">Join me on my visit to the Tribune newsroom, where I speak to three Cal Poly alumni working there.</p>
+<!--beginning of slideshow-->
+<div id="slider"
+data-cycle-caption="#alt-caption"
+data-cycle-caption-template="{{alt}}"
+data-cycle-fx="scrollHorz"
+data-cycle-pause-on-hover="true"
+data-cycle-speed="200">
+<div class="cycle-prev"></div>
+<div class="cycle-next"></div>
+<img src="img/office-8.jpg" width="100%" height="100%" alt="On February 7th, 2020, I enter the San Luis Obispo Tribune's office space. I am greeted with grins and affable faces, contrary to the stereotype that newsrooms are cold and hostile environments. Among those who eagerly welcome me are three Cal Poly journalism alumni."/>
+<img src="img/kaytlyn-3.jpg" width="100%" height="100%" alt="Katlyn Leslie graduated from Cal Poly with a Journalism degree in 2013. During her time in college, she started off working on the Mustang Daily (now Mustang News). She then pursued an internship at the Tribune during her winter quarter of senior year. She lucked out when they offered her a job opening as a part time news assistant, and she then worked her way up to a reporter position two years later."/>
+<img src="img/office-2.jpg" width="100%" height="100%" alt="Her duties as a staff writer include covering big business news, attending conferences, and covering breaking news. Her job requires unrelenting alertness and engagement, as news stories are ongoing and must be constantly kept track of."/>
+<img src="img/kaytlyn-1.jpg" width="100%" height="100%" alt="“I grew up in the military so we moved around a lot. I never had that sense of connectedness. I always knew that what I wanted was to have a place in a community,” Leslie shares, “When you’re college you want to be a big star reporter. You want to report national news at one of the big papers. But I really feel like the future of journalism is in community news- in telling the stories of the people in an area.”"/>
+<img src="img/kaytlyn-2.jpg" width="100%" height="100%" alt="Leslie feels that the Cal Poly Journalism major has sufficiently prepared her for her career, as she even occasionally refers to her old class notes. She encourages Cal Poly Journalism majors to get involved on campus, whether that be with the school radio station or the newspaper."/>
+<img src="img/stephanie-1.jpg" width="100%" height="100%" alt="Stephanie Finucane graduated from Cal Poly in 1980 with a degree in journalism and a concentration in agriculture. She started off doing an internship at Lumix Feed, then became an editorial assistant in Oregon, worked at Santa Maria Times, was a reporter at Santa Barbara News Press and finally became a reporter at the Tribune in 2000. She then gradually worked her way up to an assistant opinion editor position, the job she currently holds."/>
+<img src="img/office-5.jpg" width="100%" height="100%" alt="Her responsibilities as an opinion editor include interviewing, endorsing candidates, editing letters, picking cartoons and writing editorials."/>
+<img src="img/stephanie-2-1.jpg" width="100%" height="100%" alt="“This job is challenging in that I write about an array of subjects, while reporters maybe cover two or three different topics. You kind of have to know a bit about everything going on in the county. It’s also really interesting because you get to write about a lot of different things,” says Finucane."/>
+<img src="img/joe-1.jpg" width="100%" height="100%" alt="Joe Tarica, another Cal Poly journalism alumnus, graduated in 1993. Like Leslie, he worked on the Mustang daily during college and decided to do an internship at the Tribune. He was offered a part-time position as a copy editor, and this became a full-time position upon his graduation."/>
+<img src="img/office-3.jpg" width="100%" height="100%" alt="Tarica, pictured above in a meeting, says his job consists of overseeing reporters and dealing with corporate matters. Though journalism has evolved throughout his career, he believes that certain elements of the profession have remained the same."/>
+<img src="img/office-4.jpg" width="100%" height="100%" alt="“We’re fulfilling a role in the community that’s more important now than it ever has been,” Tarica asserts, “Being able to tell stories, go out and communicate with our readership, track our local governments- and trying to do all the functions that the American press is expected to do. All of that is the same as it has been throughout my career.”"/>
+<img src="img/office-7-.jpg" width="100%" height="100%" alt="The Tribune will be offering internships for college students this summer. Tarica says that any Cal Poly journalism students who are interested should stay tuned for an email from the Cal Poly Journalism department with more details."/>
+</div><!--end of slideshow-->
+<!--beginning of slideshow caption-->
+<div id="alt-caption" class="center">
+</div><!--end of slideshow caption-->
+<p class="tab"><a href="#tl">Future Plans</a></p>
+</article><!--end of article-->
+</div><!--end of row-->
+<!--end of slideshow section-->
+	
+<!--beginning of audio section-->
+<div class="row">
+<h1 id="tl">What do you plan to do with your journalism degree?</h1>
+<article>
+  <p class="tab">Click on images to hear what these third-year Cal Poly journalism majors have to say. (double-click to pause audio). </p>
+  <div class="table">
+	<div id="trip">
+<audio id="audio_1">
+    <source src="audio/adrian.mp3" type="audio/mpeg" />
+</audio>
+            
+<audio id="audio_2">
+    <source src="audio/tula.mp3" type="audio/mpeg" />
+</audio>
+            
+<audio id="audio_3">
+	<source src="audio/cisco.mp3" type="audio/mpeg" />
+</audio>
+            
+<img src="img/adrian.gif" class="image2" alt="description" onMouseOver="this.src='img/adrian2.jpg'" onMouseOut="this.src='img/adrian.gif'" onClick="document.getElementById('audio_1').play(); return false;" onDblClick="document.getElementById('audio_1').pause(); return false;">
+ /&gt; 
+            
+<img src="img/tula.gif" class="image2" alt="description" onMouseOver="this.src='img/tula2.jpg'" onMouseOut="this.src='img/tula.gif'" onClick="document.getElementById('audio_2').play(); return false;" onDblClick="document.getElementById('audio_2').pause(); return false;">
+ /&gt;
+            
+<img src="img/cisco.gif" class="image2" alt="description" onMouseOver="this.src='img/cisco2.jpg'" onMouseOut="this.src='img/cisco.gif'" onClick="document.getElementById('audio_3').play(); return false;" onDblClick="document.getElementById('audio_3').pause(); return false;">
+/&gt;
+</div>
+</div>
+</article>
+</div>
+<!--end of audio section-->
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+<!--beginning of parallax image-->
+<div class="parallax" data-parallax="scroll" data-bleed="10" data-speed="0.2" iosFix="true" data-image-src="img/parallax.jpg">
+</div>
+<!--end of parallax image-->
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+<!--beginning of video section-->
+<div class="row">
+<h1 id="vid">Megan Healy: The Cal Poly Journalism Alumna Who Learned by Doing</h1>
+<article>
+<p class="tab">Text goes here</p>    
+<video width="100%" height="100%" poster="img/posterimg.png" controls>
+<source src="img/meganhealy.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</article>
+</div>
+
+    
+
+<!--beginning of infographic section-->
+<div class="row whiteBG">
+<h2 id="num">More information</h2>
+ <script id="infogram_0_f6b22ec6-3ec5-432e-8eae-80d08e82bd8b" title="journalism careers" src="https://e.infogram.com/js/dist/embed.js?fws" type="text/javascript"></script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/f6b22ec6-3ec5-432e-8eae-80d08e82bd8b" style="color:#989898!important;text-decoration:none!important;" target="_blank">journalism careers</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+<article>
+<p class="tab"></p>
+<!--infographic embed code here-->
+</article>
+</div>
+<!--end of infographic section-->
+	
+<!--beginning of footer-->
+<footer>Journo Journeys | San Luis Obispo, CA | <a href="mailto: amandamw0507@gmail.com?Subject=Inquiry" target="_top">Send Email</a> | Copyright 2020 | Site by Amanda Wernik 
+</footer>
+<!--end of footer-->
+	
+</body>
+	
+<!--the following script controls the responsive navigation-->
+<script>
+	(function($) { // Begin jQuery
+  $(function() { // DOM ready
+    // If a link has a dropdown, add sub menu toggle.
+    $('nav ul li a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      // Close one dropdown when selecting another
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    // Clicking away from dropdown will remove the dropdown class
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+    // Toggle open and close nav styles on click
+    $('#nav-toggle').click(function() {
+      $('nav ul').slideToggle();
+    });
+    // Hamburger to X toggle
+    $('#nav-toggle').on('click', function() {
+      this.classList.toggle('active');
+    });
+  }); // end DOM ready
+})(jQuery); // end jQuery
+	</script>
+	<script>
+	var headertext = [];
+var headers = document.querySelectorAll("#miyazaki th"),
+tablerows = document.querySelectorAll("#miyazaki th"),
+tablebody = document.querySelector("#miyazaki tbody");
+for(var i = 0; i < headers.length; i++) {
+	var current = headers[i];
+	headertext.push( current.textContent.replace( /\r?\n|\r/,"") );
 }
-  </script>
-    </body>
+for (var i = 0, row; row = tablebody.rows[i]; i++) {
+	for (var j = 0, col; col = row.cells[j]; j++) {
+		col.setAttribute("data-th", headertext[j]);
+	}
+}
+</script>
+	
+	<!----Prevents audio tracks from playing simultaneously---->
+<script>
+document.addEventListener('play', function(e){
+    var audios = document.getElementsByTagName('audio');
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(audios[i] != e.target){
+            audios[i].pause();
+        }
+    }
+}, true);
+    </script>
 
 </html>
