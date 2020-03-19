@@ -1,7 +1,6 @@
 <!doctype html>
 
 <html>
-	
 <head>
 
 <!--The following displays language used in browser to interpret page -->
@@ -77,6 +76,31 @@ function hasScrolled() {
     
     lastScrollTop = st;
 }
+    
+var final = '\"The future influences the present just as much as the past.\" -Friedrich Nietzsche';
+var temp = '';
+    
+function typewriter() {
+    
+    var current = document.getElementById("typewriter").innerHTML;
+    var i = 0;
+    for (var i = 0; i < final.length; i++) {
+        typewriterLoop(i)
+    }
+}
+    
+function typewriterLoop(i) {
+    setTimeout(function() {
+        var current = document.getElementById("typewriter").innerHTML;
+        var n = current.length;
+        current = current + final[n];
+        document.getElementById("typewriter").innerHTML = current;
+    }, 50 * i);
+    
+} 
+    
+    
+
 </script>
     
 <!--Favicon - images are in a folder called 'fav'-->
@@ -110,7 +134,7 @@ function topFunction() {
 </script>   
 </head>
 
-<body>
+<body onload="typewriter()">
 
 <!--beginning of navigation section-->
 <header>
@@ -135,6 +159,7 @@ function topFunction() {
           <a href="#num">More information</a>
 			</li>
       </ul>
+    
 </nav>
 </div>
 <!--closing navigation tag-->
@@ -143,7 +168,10 @@ function topFunction() {
     
 <!--main image-->
 <div class="container">
-<p class="line-1 anim-typewriter" style="color: white; font-family: courier new; font-weight: bold;">"The future influences the present just as much as the past." -Friedrich Nietzsche</p>
+<!--
+<p class="line-1 anim-typewriter" style="color: white; font-family: courier new; font-weight: bold;" style="width:100%;">"The future influences the present just as much as the past." -Friedrich Nietzsche</p>
+-->
+    <p id="typewriter" class="line-1" style="color: white; font-family: courier new; font-weight: bold; width: 100%;"></p>
 </div>
 <!--animated welcome-->
 <div class="wrapper">
@@ -307,7 +335,6 @@ for (var i = 0, row; row = tablebody.rows[i]; i++) {
 	}
 }
 </script>
-	
 	<!----Prevents audio tracks from playing simultaneously---->
 <script>
 document.addEventListener('play', function(e){
