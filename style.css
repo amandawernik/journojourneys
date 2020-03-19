@@ -145,7 +145,7 @@ nav ul li a:visited {
 }
 nav ul li a:hover,
 nav ul li a:visited:hover {
-    background-color: black;
+    background-color: sandybrown;
     color: white;
 }
 nav ul li a:not(:only-child):after,
@@ -465,7 +465,7 @@ footer a {
 }
 /*(link color when moused over)*/
 footer a:hover {
-	color: #cc00b3;
+	color: darkblue;
 }
 
 /*----------------AUDIO BOARD-----------------*/
@@ -544,11 +544,11 @@ footer a:hover {
 
   font-size: 10px; /* Increase font size */
 }
-
 #myBtn:hover {
   background-color: darkblue;
-  opacity: 0.75;   
+  opacity: 1;   
 }
+
 
 /*----menu dissapear when scroll---*/
 .nav-up {
